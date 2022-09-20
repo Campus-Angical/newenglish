@@ -10,11 +10,11 @@ class HomePage extends GetWidget<HomeCtrl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 231, 211),
       appBar: AppBar(
-          toolbarHeight: 90,
           title: Text("New English", style: TextStyle(fontSize: 25)),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 255, 113, 125),
+          backgroundColor: Color.fromARGB(255, 198, 172, 199),
           actions: [
             Icon(
               Icons.search,
@@ -109,30 +109,36 @@ class HomePage extends GetWidget<HomeCtrl> {
       ),
       body: Column(
         children: [
-          Column(
+          Card(
+            color: Color.fromARGB(255, 237, 179, 193),
+            child: Row(
             children: [
-              Icon(Icons.person, size: 150),
+              Icon(Icons.person, size: 150, color: Colors.white),
               Text(
                 "Welcome",
                 style: TextStyle(fontSize: 25),
               ),
             ],
+            ),
           ),
           Text(
             "Recommended",
             style: TextStyle(fontSize: 20),
           ),
-          Row(
-            children: [
-              Icon(
-                Icons.coffee,
-                size: 100,
-              ),
-              Text(
-                "Coffee Shop",
-                style: TextStyle(fontSize: 25),
-              ),
-            ],
+          Card(
+            color: Color.fromARGB(255, 196, 229, 238),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.coffee,
+                  size: 100,
+                ),
+                Text(
+                  "Coffee Shop",
+                  style: TextStyle(fontSize: 25),
+                ),
+              ],
+            ),
           ),
           Obx((() {
             if (controller.state is HomeLoadedState) {
@@ -167,9 +173,9 @@ class HomePage extends GetWidget<HomeCtrl> {
   List<Widget> _buildGridView(List<Local> locais) {
     List<Widget> widgets = [];
     for (Local l in locais) {
-      widgets.add(Container(
+      widgets.add(Card(
         child: Icon(l.icon, size: 100),
-        color: Color.fromARGB(255, 204, 228, 165),
+        color: l.color,
       ));
     }
     return widgets;
